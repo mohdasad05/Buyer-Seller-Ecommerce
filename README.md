@@ -25,5 +25,5 @@ A basic e-commerce backend system built using Django, Django REST Framework, MyS
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/sabhyasha-ecommerce.git
+git clone  https://github.com/mohdasad05/sabhyasha-ecommerce.git
 cd sabhyasha-ecommerce
