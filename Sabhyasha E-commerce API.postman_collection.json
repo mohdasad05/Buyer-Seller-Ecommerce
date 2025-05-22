@@ -1,0 +1,332 @@
+{
+	"info": {
+		"_postman_id": "b90dfca4-bb9b-4028-8efb-0020866b122e",
+		"name": "Sabhyasha E-commerce API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40880919"
+	},
+	"item": [
+		{
+			"name": "User Registration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"user@example.com\",\n  \"username\": \"user123\",\n  \"password\": \"password123\",\n  \"is_buyer\": true,\n  \"is_seller\": false\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/accounts/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"accounts",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login (JWT)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"buyer@email.com\",\n  \"password\": \"1234\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/accounts/login/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"accounts",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products/?search=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products",
+						""
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3NzY2NTM4LCJpYXQiOjE3NDc3NjYyMzgsImp0aSI6ImNiMzUwMTUzNTkzNjRkNGI4OTVkNTM3YTVkNTQ2MjY5IiwidXNlcl9pZCI6MX0.1ZmjfaoiBlsw4eqF1Z86jDn9TipVRcO0q7Db5AkeGM8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Sample Product 2\",\n  \"description\": \"A test product 2\",\n  \"price\": \"39.99\",\n  \"stock\": 9\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products/add/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products",
+						"add",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3ODE2MzQ4LCJpYXQiOjE3NDc4MTYwNDgsImp0aSI6ImNhNjllN2RmNDY3OTQ3YTk4NDg3MjM3MDQ4YTkxZTcxIiwidXNlcl9pZCI6Mn0.KClPykwVFWCjVQEN0mp4J8VKDIxzyoQ0A-vZpN0hFeU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"status\": \"PENDING\",\n  \"items\": [\n    {\n      \"product\": 1,\n      \"quantity\": 2,\n      \"price\": \"19.99\"\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/orders/create/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"orders",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Orders",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3ODE2MzQ4LCJpYXQiOjE3NDc4MTYwNDgsImp0aSI6ImNhNjllN2RmNDY3OTQ3YTk4NDg3MjM3MDQ4YTkxZTcxIiwidXNlcl9pZCI6Mn0.KClPykwVFWCjVQEN0mp4J8VKDIxzyoQ0A-vZpN0hFeU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/orders/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"orders",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order Detail",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3ODE2MzQ4LCJpYXQiOjE3NDc4MTYwNDgsImp0aSI6ImNhNjllN2RmNDY3OTQ3YTk4NDg3MjM3MDQ4YTkxZTcxIiwidXNlcl9pZCI6Mn0.KClPykwVFWCjVQEN0mp4J8VKDIxzyoQ0A-vZpN0hFeU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/orders/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"orders",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order Status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3ODE2MzQ4LCJpYXQiOjE3NDc4MTYwNDgsImp0aSI6ImNhNjllN2RmNDY3OTQ3YTk4NDg3MjM3MDQ4YTkxZTcxIiwidXNlcl9pZCI6Mn0.KClPykwVFWCjVQEN0mp4J8VKDIxzyoQ0A-vZpN0hFeU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/orders/1/status/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"orders",
+						"1",
+						"status",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
