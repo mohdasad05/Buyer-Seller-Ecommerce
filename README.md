@@ -120,13 +120,13 @@ You can test the API endpoints using:
 ```
 sabhyasha-ecommerce/
 │
-├── accounts/         # CustomUser model & registration APIs
-├── products/         # Product models & views
-├── orders/           # Order & OrderItem models
-├── sabhyasha/        # Project settings
-├── requirements.txt  # Dependencies
-├── .env              # Environment config (you create it)
-├── sabhyasha_ecommerce.sql  # MySQL database dump
+├── accounts/                   # CustomUser model & registration APIs
+├── products/                   # Product models & views
+├── orders/                     # Order & OrderItem models
+├── sabhyasha_ecommerce/        # Project settings
+├── requirements.txt            # Dependencies
+├── .env                        # Environment config (you create it)
+├── sabhyasha_ecommerce.sql     # MySQL database dump
 ├── README.md
 └── manage.py
 ```
